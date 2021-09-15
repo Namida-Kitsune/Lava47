@@ -17,7 +17,8 @@
 
     <div class="card text-center">
         <div class="card-header">
-            <button id="btnShare" onclick="shareMsg()" class="btn"><img src="imglava47.jpg" class="img-fluid" alt="..."></button>
+            <button id="btnShare" onclick="shareMsg()" class="btn"><img src="imglava47.jpg" class="img-fluid"
+                    alt="..."></button>
             <div class="card-footer text-muted">
                 ยินดีให้บริการตลอด 24 ชั่วโมงค่ะ พบปัญหาสามารถแจ้งแอดมินได้ตลอดค่ะ
             </div>
@@ -63,17 +64,18 @@
             }
 
             async function main() {
-                liff.ready.then(() => {
-                    document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-                    if (liff.isLoggedIn()) {
-                        getUserProfile()
-                        getContext()
-                        getEnvironment()
-                    } else {
-                        liff.login()
-                    }
-                })
                 await liff.init({ liffId: "1656429835-pJaKwGyR" })
+                liff.isLoggedIn()
+                if (liff.isLoggedIn()) {
+                    getEnvironment()
+                    getUserProfile()
+                    getContext()
+                } else {
+                    liff.login()
+                }
+
+                // getFriendship()
+                // createUniversalLink()
             }
             main()
         </script>
