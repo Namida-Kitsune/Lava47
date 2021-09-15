@@ -9,28 +9,73 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">LAVA47</span>
+        </div>
+    </nav>
 
+    <div class="card text-center">
+        <div class="card-header">
+            <button id="btnShare" onclick="shareMsg()"><img src="imglava47.jpg" class="img-fluid" alt="..."></button>
+            <div class="card-footer text-muted">
+                ยินดีให้บริการตลอด 24 ชั่วโมงค่ะ พบปัญหาสามารถแจ้งแอดมินได้ตลอดค่ะ
+            </div>
+        </div>
+        <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+        <script>
 
-    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-    <script>
+            async function shareMsg() {
+                await liff.shareTargetPicker([
+                    {
+                        type: "text",
+                        text: "This message was sent by ShareTargetPicker"
+                    }
+                ])
+            }
 
-        async function main() {
-            liff.ready.then(() => {
-                document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-                if (liff.isLoggedIn()) {
-                    getEnvironment()
-                    getUserProfile()
-                    getContext()
-                    getFriendship()
-                    createUniversalLink()
-                } else {
-                    liff.login()
+            function getContext() {
+                if (liff.getContext() != null) {
+                    liff.getContext().type
+                    liff.getContext().viewType
+                    liff.getContext().utouId
+                    liff.getContext().roomId
+                    liff.getContext().groupId
                 }
-            })
-            await liff.init({ liffId: "1656429835-pJaKwGyR" })
-        }
-        main()
-    </script>
+            }
+
+            async function getUserProfile() {
+                const profile = await liff.getProfile()
+                document.getElementById("pictureUrl").src = profile.pictureUrl
+                document.getElementById("userId").append(profile.userId)
+                document.getElementById("statusMessage").append(profile.statusMessage)
+                document.getElementById("displayName").append(profile.displayName)
+                document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+            }
+
+            function getEnvironment() {
+                liff.getOS()
+                liff.getLanguage()
+                liff.getVersion()
+                liff.getAccessToken()
+                liff.isInClient()
+            }
+
+            async function main() {
+                liff.ready.then(() => {
+                    document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+                    if (liff.isLoggedIn()) {
+                        getUserProfile()
+                        getContext()
+                        getEnvironment()
+                    } else {
+                        liff.login()
+                    }
+                })
+                await liff.init({ liffId: "1656429835-pJaKwGyR" })
+            }
+            main()
+        </script>
 </body>
 
 </html>
