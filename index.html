@@ -1,88 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>แนะนำเพื่อนรับเครดิตฟรี 50 บาทอย่าพลาด!!!</title>
-  <link rel="stylesheet" href="Bootstrap\css\bootstrap.min.css">
-  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>Lava47</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">LAVA47</span>
-    </div>
-  </nav>
 
-  <div class="card text-center">
-    <div class="card-header">
 
-      <button type="button" id="btnShare" class="btn"> <img src="imglava47.jpg" class="img-fluid" alt="..."></button>
-      <div class="card-footer text-muted">
-        ยินดีให้บริการตลอด 24 ชั่วโมงค่ะ พบปัญหาสามารถแจ้งแอดมินได้ตลอดค่ะ
-      </div>
-    </div>
-    <section id="profile">
-      <img id="pictureUrl" src="https://mokmoon.com/images/ic_liff.png">
-      <p id="userId"></p>
-      <p id="displayName"></p>
-      <p id="statusMessage"></p>
-      <p id="email"></p>
-    </section>
-    <script src="Bootstrap\js\bootstrap.min.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+        
+        async function main() {
+            liff.ready.then(() => {
+                document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+                if (liff.isLoggedIn()) {
+                    getEnvironment()
+                    getUserProfile()
+                    getContext()
+                    getFriendship()
+                    createUniversalLink()
+                } else {
+                    liff.login()
+                }
+            })
+            await liff.init({ liffId: "1656429703-qGKbERGk" })
+        }
+        main()
+    </script>
 </body>
-
-<script>
-  // Initialize LIFF app
-  await liff.init({ liffId: "1656429348-RqXqo4v5" })
-
-  // Try a LIFF function
-  switch (liff.getOS()) {
-    case "android": body.style.backgroundColor = "#d1f5d3"; break
-    case "ios": body.style.backgroundColor = "#eeeeee"; break
-  }
-
-  async function getUserProfile() {
-    const profile = await liff.getProfile()
-    pictureUrl.src = profile.pictureUrl
-    userId.innerHTML = "<b>userId:</b> " + profile.userId
-    statusMessage.innerHTML = "<b>statusMessage:</b> " + profile.statusMessage
-    displayName.innerHTML = "<b>displayName:</b> " + profile.displayName
-  }
-
-  async function main() {
-    // ...
-    getUserProfile()
-
-    if (!liff.isInClient()) {
-      if (liff.isLoggedIn()) {
-        btnShare.style.display = "block"
-        // ...
-      } else {
-        // ...
-      }
-    } else {
-      btnShare.style.display = "block"
-      // ...
-    }
-  }
-
-  async function shareMsg() {
-    await liff.shareTargetPicker([
-      {
-        type: "image",
-        originalContentUrl: "https://d.line-scdn.net/stf/line-lp/2016_en_02.jpg",
-        previewImageUrl: "https://d.line-scdn.net/stf/line-lp/2016_en_02.jpg"
-      }
-    ])
-  }
-
-  btnShare.onclick = () => {
-    shareMsg()
-  }
-</script>
 
 </html>
