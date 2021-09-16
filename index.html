@@ -17,8 +17,8 @@
 
     <div class="card text-center">
         <div class="card-header">
-            <button id="btnShare" onclick="shareMsg()" class="btn"><img src="imglava47.jpg" class="img-fluid"
-                    alt="..."></button>
+            <button id="btnShare" onclick="shareMsg()" class="btn"><img
+                    src="https://sv1.picz.in.th/images/2021/09/16/CjbBFa.jpg" class="img-fluid" alt="..."></button>
             <div class="card-footer text-muted">
                 ยินดีให้บริการตลอด 24 ชั่วโมงค่ะ พบปัญหาสามารถแจ้งแอดมินได้ตลอดค่ะ
             </div>
@@ -30,10 +30,50 @@
             async function shareMsg() {
                 await liff.shareTargetPicker([
                     {
-                        type: "text",
-                        text: "This message was sent by ShareTargetPicker"
+                        type: "flex",
+                        altText: "Flex Message from Share Target Picker",
+                        contents: {
+                            "type": "bubble",
+                            "direction": "ltr",
+                            "hero": {
+                                "type": "image",
+                                "url": "https://sv1.picz.in.th/images/2021/09/16/CjbBFa.jpg",
+                                "align": "center",
+                                "gravity": "center",
+                                "size": "full",
+                                "aspectRatio": "1.51:1",
+                                "aspectMode": "fit"
+                            },
+                            "body": {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                    {
+                                        "type": "button",
+                                        "action": {
+                                            "type": "uri",
+                                            "label": "สมัครสมาชิก",
+                                            "uri": "https://m.lava47.com/dashboard/login?fbclid=IwAR1_afiyQ_9qPz6XAeqg2ObO7Ow3K7ZUSXMn4EfbuTbFEnDyyTj3H77lfZs"
+                                        },
+                                        "color": "#000000FF",
+                                        "style": "primary"
+                                    },
+                                    {
+                                        "type": "button",
+                                        "action": {
+                                            "type": "uri",
+                                            "label": "แชร์ให้เพื่อน",
+                                            "uri": "https://liff.line.me/1656429835-pJaKwGyR"
+                                        },
+                                        "color": "#000000FF",
+                                        "style": "primary"
+                                    }
+                                ]
+                            }
+                        }
                     }
                 ])
+                liff.closeWindow()
             }
 
             function getContext() {
