@@ -1,124 +1,123 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-    <title>Lava47</title>
-    <link rel="stylesheet" href="Bootstrap\css\bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+  <title>Lava47</title>
+  <link rel="stylesheet" href="Bootstrap\css\bootstrap.min.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">LAVA47</span>
-        </div>
-    </nav>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">LAVA47</span>
+    </div>
+  </nav>
 
-    <div class="card text-center">
-        <div class="card-header">
-            <button id="btnShare" onclick="shareMsg()" class="btn"><img
-                    src="https://sv1.picz.in.th/images/2021/09/16/CjbBFa.jpg" class="img-fluid" alt="..."></button>
-            <div class="card-footer text-muted">
-                ยินดีให้บริการตลอด 24 ชั่วโมงค่ะ พบปัญหาสามารถแจ้งแอดมินได้ตลอดค่ะ
-            </div>
-        </div>
-        <script src="Bootstrap\js\bootstrap.min.js"></script>
-        <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-        <script>
+  <div class="card text-center">
+    <div class="card-header">
+      <button id="btnShare" onclick="shareMsg()" class="btn"><img
+          src="https://sv1.picz.in.th/images/2021/09/16/CjbBFa.jpg" class="img-fluid" alt="..."></button>
+      <div class="card-footer text-muted">
+        ยินดีให้บริการตลอด 24 ชั่วโมงค่ะ พบปัญหาสามารถแจ้งแอดมินได้ตลอดค่ะ
+      </div>
+    </div>
+    <script src="Bootstrap\js\bootstrap.min.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
 
-            async function shareMsg() {
-                await liff.shareTargetPicker([
-                    {
-                        type: "flex",
-                        altText: "Flex Message from Share Target Picker",
-                        contents: {
-                            "type": "bubble",
-                            "direction": "ltr",
-                            "hero": {
-                                "type": "image",
-                                "url": "https://sv1.picz.in.th/images/2021/09/16/CjbBFa.jpg",
-                                "align": "center",
-                                "gravity": "center",
-                                "size": "full",
-                                "aspectRatio": "1.51:1",
-                                "aspectMode": "fit"
-                            },
-                            "body": {
-                                "type": "box",
-                                "layout": "vertical",
-                                "contents": [
-                                    {
-                                        "type": "button",
-                                        "action": {
-                                            "type": "uri",
-                                            "label": "สมัครสมาชิก",
-                                            "uri": "https://m.lava47.com/dashboard/login?fbclid=IwAR1_afiyQ_9qPz6XAeqg2ObO7Ow3K7ZUSXMn4EfbuTbFEnDyyTj3H77lfZs"
-                                        },
-                                        "color": "#000000FF",
-                                        "style": "primary"
-                                    },
-                                    {
-                                        "type": "button",
-                                        "action": {
-                                            "type": "uri",
-                                            "label": "แชร์ให้เพื่อน",
-                                            "uri": "https://liff.line.me/1656429835-pJaKwGyR"
-                                        },
-                                        "color": "#000000FF",
-                                        "style": "primary"
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                ])
-                liff.closeWindow()
+      async function shareMsg() {
+        await liff.shareTargetPicker([
+          {
+            type: "flex",
+            altText: "Flex Message from Share Target Picker",
+            contents: {
+              "type": "bubble",
+              "direction": "ltr",
+              "hero": {
+                "type": "image",
+                "url": "https://sv1.picz.in.th/images/2021/09/16/CjbBFa.jpg",
+                "align": "center",
+                "gravity": "center",
+                "size": "full",
+                "aspectRatio": "1.51:1",
+                "aspectMode": "fit"
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "uri",
+                      "label": "สมัครสมาชิก",
+                      "uri": "https://m.lava47.com/dashboard/login?fbclid=IwAR1_afiyQ_9qPz6XAeqg2ObO7Ow3K7ZUSXMn4EfbuTbFEnDyyTj3H77lfZs"
+                    },
+                    "color": "#000000FF",
+                    "style": "primary"
+                  },
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "uri",
+                      "label": "แชร์ให้เพื่อน",
+                      "uri": "https://liff.line.me/1656429913-AdWVq9yQ"
+                    },
+                    "color": "#000000FF",
+                    "style": "primary"
+                  }
+                ]
+              }
             }
+          }
+        ])
+        liff.closeWindow()
+      }
 
-            function getContext() {
-                if (liff.getContext() != null) {
-                    liff.getContext().type
-                    liff.getContext().viewType
-                    liff.getContext().utouId
-                    liff.getContext().roomId
-                    liff.getContext().groupId
-                }
-            }
+      function getContext() {
+        if (liff.getContext() != null) {
+          liff.getContext().type
+          liff.getContext().viewType
+          liff.getContext().utouId
+          liff.getContext().roomId
+          liff.getContext().groupId
+        }
+      }
 
-            async function getUserProfile() {
-                const profile = await liff.getProfile()
-                document.getElementById("pictureUrl").src = profile.pictureUrl
-                document.getElementById("userId").append(profile.userId)
-                document.getElementById("statusMessage").append(profile.statusMessage)
-                document.getElementById("displayName").append(profile.displayName)
-                document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
-            }
+      async function getUserProfile() {
+        const profile = await liff.getProfile()
+        document.getElementById("pictureUrl").src = profile.pictureUrl
+        document.getElementById("userId").append(profile.userId)
+        document.getElementById("statusMessage").append(profile.statusMessage)
+        document.getElementById("displayName").append(profile.displayName)
+        document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+      }
 
-            function getEnvironment() {
-                liff.getOS()
-                liff.getLanguage()
-                liff.getVersion()
-                liff.getAccessToken()
-                liff.isInClient()
-            }
+      function getEnvironment() {
+        liff.getOS()
+        liff.getLanguage()
+        liff.getVersion()
+        liff.getAccessToken()
+        liff.isInClient()
+      }
 
-            async function main() {
-                await liff.init({ liffId: "1656429835-pJaKwGyR" })
-                liff.isLoggedIn()
-                if (liff.isLoggedIn()) {
-                    getEnvironment()
-                    getUserProfile()
-                    getContext()
-                } else {
-                    liff.login()
-                }
+      async function main() {
+        await liff.init({ liffId: "1656429835-pJaKwGyR" })
+        liff.isLoggedIn()
+        if (liff.isLoggedIn()) {
+          getEnvironment()
+          getUserProfile()
+          getContext()
+        } else {
+          liff.login()
+        }
 
-                // getFriendship()
-                // createUniversalLink()
-            }
-            main()
-        </script>
+        // getFriendship()
+        // createUniversalLink()
+      }
+      main()
+    </script>
 </body>
 
 </html>
